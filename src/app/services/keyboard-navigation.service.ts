@@ -25,14 +25,13 @@ export class KeyboardNavigationService implements OnDestroy {
     const navigateLeftSubject = new Subject<void>();
 
     this.keyboardSubject.subscribe(next => {
-      console.log(next);
       if (next === 'ArrowLeft') navigateLeftSubject.next();
     })
 
     return navigateLeftSubject.asObservable();
   }
 
-    /**
+  /**
    * Fires an observable event when the user wants to navigate to the right
    */
   public onNavigateRight(): Observable<void> {
@@ -43,5 +42,19 @@ export class KeyboardNavigationService implements OnDestroy {
     })
 
     return navigateRightSubject.asObservable();
+  }
+
+  /**
+   * Fires an observable event when the user wants to send a form
+   */
+  public onNavigationSend(): Observable<void> {
+    const navigateSendSubject = new Subject<void>();
+
+    this.keyboardSubject.subscribe(next => {
+      console.log(next);
+      if (next === 'Enter') navigateSendSubject.next();
+    })
+
+    return navigateSendSubject.asObservable();
   }
 }

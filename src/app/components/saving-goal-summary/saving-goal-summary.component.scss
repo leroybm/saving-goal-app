@@ -1,0 +1,50 @@
+@import '../../shared//variables.scss';
+
+.app-saving-goal-summary {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    border: 1px solid $color-border;
+    margin-bottom: 32px;
+
+    &__per-month {
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            color: $color-gray-900;
+            font-size: 18px;
+
+            @include desktop {
+                font-size: 20px;
+            }
+        }
+
+        strong {
+            @include font-rubik;
+            color: $color-secondary;
+            font-size: 24px;
+
+            @include desktop {
+                font-size: 32px;
+            }
+        }
+    }
+
+    &__text-summary {
+        padding: 24px 32px;
+        background: $color-background;
+        font-size: 12px;
+        text-align: center;
+
+        @include desktop {
+            text-align: left;
+        }
+
+        b {
+            @include font-worksans-semibold
+        }
+    }
+}

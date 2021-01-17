@@ -11,4 +11,12 @@ function addMonths(oldDate: Date, months: number): Date {
     return newDate;
 }
 
-export { addMonths }
+function monthsBetween(x: Date, y: Date) {
+    let months = (y.getFullYear() - x.getFullYear()) * 12;
+    return months - x.getMonth() + y.getMonth();
+}
+
+export {
+    addMonths,
+    monthsBetween
+}

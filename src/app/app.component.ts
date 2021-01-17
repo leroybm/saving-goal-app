@@ -12,41 +12,17 @@ import { Component } from '@angular/core';
         <h2>Let's plan your <strong>saving goal</strong></h2>
       </div>
 
-      <div class="new-saving-goal">
-        <div class="new-saving-goal__header">
-          <img src="assets/img/house-icon.svg" alt="House Icon">
-          <div>
-            <h3>Buy a house</h3>
-            <p>Saving goal</p>
-          </div>
-        </div>
-        <div class="new-saving-goal__form">
-          <app-currency-input></app-currency-input>
-          <app-month-input
-            (selectedDateEvent)="date = $event"
-          ></app-month-input>
-        </div>
-        <div class="new-saving-goal__summary">
-          <div class="new-saving-goal__summary--per-month">
-            <p>Monthly amount</p>
-            <p><strong>$521</strong></p>
-          </div>
-          <div class="new-saving-goal__summary--text-summary">
-            <p>You’re planning <b>48 monthly deposits</b> to reach your <b>$25,000</b> goal by <b>October 2020.</b></p>
-          </div>
-        </div>
-        <div class="new-saving-goal__actions">
-          <button (click)="submit()">Confirm</button>
-        </div>
-      </div>
+      <app-new-saving-goal
+        [goalTitle]="'Buy a house'" 
+        (submit)="handleSubmit($event)"
+      ></app-new-saving-goal>
     </div>
   `,
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public date: Date;
 
-  public submit() {
-    console.log(this.date);
+  public handleSubmit(event) {
+    console.log(event);
   }
 }

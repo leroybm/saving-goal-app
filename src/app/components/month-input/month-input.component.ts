@@ -8,14 +8,17 @@ import { addMonths } from '../../util/date'
   template: `
     <div class="app-month-input">
       <label for="">Reach goal by</label>
+      
       <div class="app-month-input__input">
         <button (click)="addMonthsToDate(false)">
           <img src="assets/img/arrow.svg" alt="">
         </button>
+
         <div class="app-month-input__date-display">
           <span>{{ date | date:'LLLL' }}</span>
           <span>{{ date | date:'y' }}</span>
         </div>
+
         <button (click)="addMonthsToDate(true)">
           <img src="assets/img/arrow.svg" alt="">
         </button>

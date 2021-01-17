@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, by, logging, element, Key } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,9 +8,36 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('Everything should work', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('take-home-assignment app is running!');
+
+    element(by.css('.app-currency-input__input input')).sendKeys('100abc0000');
+
+    expect(
+      element(by.css('.app-saving-goal-summary__per-month p:last-of-type')).getText()
+    ).toEqual('$10,000.00');
+
+    element(by.css('.app-month-input__input button:last-of-type')).click();
+
+    expect(
+      element(by.css('.app-saving-goal-summary__per-month p:last-of-type')).getText()
+    ).toEqual('$5,000.00');
+
+    element(by.css('body')).sendKeys(Key.ARROW_RIGHT);
+
+    expect(
+      element(by.css('.app-saving-goal-summary__per-month p:last-of-type')).getText()
+    ).toEqual('$3,333.33');
+
+    expect(
+      element(by.css('.app-saving-goal-summary__text-summary')).getText()
+    ).toContain('You’re planning 3 monthly deposits to reach your $3,333.33 goal by ');
+
+    new Array(10).fill(null).forEach(() => element(by.css('body')).sendKeys(Key.ARROW_LEFT))
+
+    expect(
+      element(by.css('.app-saving-goal-summary__per-month p:last-of-type')).getText()
+    ).toEqual('$10,000.00');
   });
 
   afterEach(async () => {

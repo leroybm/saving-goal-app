@@ -13,7 +13,7 @@ import { maskCurrency, parseNumber } from 'src/app/util/currency';
           type="text"
           [value]="value"
           (keyup)="applyMask($event)"
-          (keydown)="$event.stopPropagation()"
+          (keydown)="handleKeyDown($event)"
         />
       </div>
     </div>
@@ -45,4 +45,16 @@ export class CurrencyInputComponent implements OnInit {
     this.currencyValueEmitter.emit(parseNumber(this.value))
   }
 
+  /**
+   * Prevents text from being inserted on input
+   * 
+   * @param event 
+   */
+  handleKeyDown(event) {
+    event.stopPropagation();
+
+    if (event.key.length === 1 && /[a-zA-Z]/.test(event.key)) {
+      event.preventDefault();
+    }
+  }
 }

@@ -1,0 +1,35 @@
+$color-primary: #1B31A8;
+$color-secondary: #0079FF;
+$color-border: #E9EEF2;
+$color-background: #F4F8FA;
+$color-white: #FFFFFF;
+$color-black: #000000;
+$color-gray-900: #1E2A32;
+$color-gray-600: #4D6475;
+$color-gray-400: #708797;
+
+$font-rubik: 'Rubik', sans-serif;
+$font-worksans: 'Work Sans', sans-serif;
+
+$mobile-width: 560px;
+
+@mixin desktop {
+    @media (min-width: $mobile-width) {
+        @content
+    }
+}
+
+@mixin font-rubik {
+    font-family: $font-rubik;
+    font-weight: 500;
+}
+
+@mixin font-worksans-normal {
+    font-family: $font-worksans;
+    font-weight: 400;
+}
+
+@mixin font-worksans-semibold {
+    font-family: $font-worksans;
+    font-weight: 600;
+}

@@ -22,7 +22,9 @@ import { Component } from '@angular/core';
         </div>
         <div class="new-saving-goal__form">
           <app-currency-input></app-currency-input>
-          <app-month-input></app-month-input>
+          <app-month-input
+            (selectedDateEvent)="date = $event"
+          ></app-month-input>
         </div>
         <div class="new-saving-goal__summary">
           <div class="new-saving-goal__summary--per-month">
@@ -34,7 +36,7 @@ import { Component } from '@angular/core';
           </div>
         </div>
         <div class="new-saving-goal__actions">
-          <button>Confirm</button>
+          <button (click)="submit()">Confirm</button>
         </div>
       </div>
     </div>
@@ -42,5 +44,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'take-home-assignment';
+  public date: Date;
+
+  public submit() {
+    console.log(this.date);
+  }
 }

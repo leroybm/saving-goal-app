@@ -32,6 +32,17 @@ describe('MonthInputComponent', () => {
     expect(component.date.getMonth()).toBe(expectedDate.getMonth());
   });
 
+  it('should add 3 months from keyboard navigation', async () => {
+    const expectedDate = new Date();
+    expectedDate.setMonth(expectedDate.getMonth() + 4);
+    const event = new KeyboardEvent("keydown",{
+      "key": "ArrowRight"
+    });
+    new Array(3).fill(null).forEach(() => window.document.dispatchEvent(event));
+    await fixture.detectChanges();
+    expect(component.date.getMonth()).toBe(expectedDate.getMonth());
+  });
+
   it('should not be a past or current month', () => {
     const expectedDate = new Date();
     expectedDate.setMonth(expectedDate.getMonth());

@@ -39,22 +39,22 @@ interface NewSavingGoalComponentOutput {
   styleUrls: ['./new-saving-goal.component.scss']
 })
 export class NewSavingGoalComponent implements OnInit, OnDestroy {
-  
+
   public endDate: Date;
-  public totalValue: number = 0;
+  public totalValue = 0;
 
   private subscription: Subscription;
 
-  @Input() goalTitle: string = 'Buy a horse';
+  @Input() goalTitle = 'Buy a horse';
 
-  @Output() submit = new EventEmitter<NewSavingGoalComponentOutput>();
+  @Output() saveNewSavingGoal = new EventEmitter<NewSavingGoalComponentOutput>();
 
   constructor(
     private keyboardNavigationService: KeyboardNavigationService
   ) { }
 
   ngOnInit(): void {
-    this.keyboardNavigationService.onNavigationSend().subscribe(() => this.emitSubmitEvent()); 
+    this.keyboardNavigationService.onNavigationSend().subscribe(() => this.emitSubmitEvent());
   }
 
   ngOnDestroy(): void {
@@ -62,7 +62,7 @@ export class NewSavingGoalComponent implements OnInit, OnDestroy {
   }
 
   public emitSubmitEvent() {
-    this.submit.emit({
+    this.saveNewSavingGoal.emit({
       endDate: this.endDate,
       totalValue: this.totalValue
     });

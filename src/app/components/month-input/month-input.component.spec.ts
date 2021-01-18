@@ -21,7 +21,7 @@ describe('MonthInputComponent', () => {
 
   it('should start with a month from now', () => {
     const expectedDate = new Date();
-    expectedDate.setMonth(expectedDate.getMonth() + 1)
+    expectedDate.setMonth(expectedDate.getMonth() + 1);
     expect(component.date.getMonth()).toBe(expectedDate.getMonth());
   });
 
@@ -35,8 +35,8 @@ describe('MonthInputComponent', () => {
   it('should add 3 months from keyboard navigation', async () => {
     const expectedDate = new Date();
     expectedDate.setMonth(expectedDate.getMonth() + 4);
-    const event = new KeyboardEvent("keydown",{
-      "key": "ArrowRight"
+    const event = new KeyboardEvent('keydown', {
+      key: 'ArrowRight'
     });
     new Array(3).fill(null).forEach(() => window.document.dispatchEvent(event));
     await fixture.detectChanges();
@@ -53,16 +53,16 @@ describe('MonthInputComponent', () => {
 
   it('should contain month string', async () => {
     const expectedDate = new Date();
-    expectedDate.setMonth(expectedDate.getMonth() + 4); 
+    expectedDate.setMonth(expectedDate.getMonth() + 4);
     new Array(3).fill(null).forEach(() => component.addMonthsToDate(true));
-    const monthString = expectedDate.toLocaleString('default', { month: 'long' })
+    const monthString = expectedDate.toLocaleString('default', { month: 'long' });
     await fixture.detectChanges();
     expect(new RegExp(monthString).test(fixture.nativeElement.textContent)).toBeTrue();
   });
 
   it('should contain year string', async () => {
     const expectedDate = new Date();
-    expectedDate.setMonth(expectedDate.getMonth() + 13); 
+    expectedDate.setMonth(expectedDate.getMonth() + 13);
     new Array(12).fill(null).forEach(() => component.addMonthsToDate(true));
     const yearString = expectedDate.getFullYear().toString();
     await fixture.detectChanges();
@@ -71,7 +71,7 @@ describe('MonthInputComponent', () => {
 
   it('should emmit changes when changing date', async () => {
     const expectedDate = new Date();
-    expectedDate.setMonth(expectedDate.getMonth() + 2); 
+    expectedDate.setMonth(expectedDate.getMonth() + 2);
     let returnedDate: Date;
     component.selectedDateEvent.subscribe(next => returnedDate = next);
     component.addMonthsToDate(true);

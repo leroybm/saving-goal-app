@@ -26,6 +26,8 @@ export class SavingGoalSummaryComponent implements OnInit {
   }
 
   get months() {
+    if (!this.date) { return; }
+
     return monthsBetween(new Date(), this.date);
   }
 

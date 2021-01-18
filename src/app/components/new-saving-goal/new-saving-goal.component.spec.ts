@@ -22,4 +22,9 @@ describe('NewSavingGoalComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  /*
+   * As this component handles all the logic from multiple functional components,
+   * the testing is done on e2e
+   */
 });

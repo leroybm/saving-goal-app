@@ -1,14 +1,14 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { KeyboardNavigationService } from 'src/app/services/keyboard-navigation.service';
-import { addMonths } from '../../util/date'
+import { addMonths } from '../../util/date';
 
 @Component({
   selector: 'app-month-input',
   template: `
     <div class="app-month-input">
       <label for="">Reach goal by</label>
-      
+
       <div class="app-month-input__input">
         <button (click)="addMonthsToDate(false)">
           <img src="assets/img/arrow.svg" alt="">
@@ -49,13 +49,13 @@ export class MonthInputComponent implements OnInit, OnDestroy {
 
   /**
    * Adds or subtracts a month from the date, prevents setting date before now
-   * 
+   *
    * @param shouldIncrease flag that indicates if this method will increase or decrease the month value
    */
   public addMonthsToDate(shouldIncrease: boolean) {
     const newDate = addMonths(this.date, shouldIncrease ? 1 : -1);
 
-    if (newDate.getTime() < new Date().getTime()) return;
+    if (newDate.getTime() < new Date().getTime()) { return; }
 
     this.date = newDate;
     this.selectedDateEvent.emit(this.date);

@@ -13,7 +13,7 @@ import { Component } from '@angular/core';
       </div>
 
       <app-new-saving-goal
-        [goalTitle]="'Buy a house'" 
+        [goalTitle]="'Buy a house'"
         (submit)="handleSubmit($event)"
       ></app-new-saving-goal>
     </div>

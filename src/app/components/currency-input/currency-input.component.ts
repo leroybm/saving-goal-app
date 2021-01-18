@@ -21,7 +21,7 @@ import { maskCurrency, parseNumber } from 'src/app/util/currency';
   styleUrls: ['./currency-input.component.scss']
 })
 export class CurrencyInputComponent implements OnInit {
-  public value: string = '';
+  public value = '';
 
   @Output() currencyValueEmitter = new EventEmitter<number>();
 
@@ -32,8 +32,8 @@ export class CurrencyInputComponent implements OnInit {
 
   /**
    * Applies a mask over the input value
-   * 
-   * @param event 
+   *
+   * @param event KeyboardEvent from input
    */
   applyMask(event) {
     event.preventDefault();
@@ -42,13 +42,13 @@ export class CurrencyInputComponent implements OnInit {
     const { value } = event.target;
 
     this.value = maskCurrency(value);
-    this.currencyValueEmitter.emit(parseNumber(this.value))
+    this.currencyValueEmitter.emit(parseNumber(this.value));
   }
 
   /**
    * Prevents text from being inserted on input
-   * 
-   * @param event 
+   *
+   * @param event KeyboardEvent from input
    */
   handleKeyDown(event) {
     event.stopPropagation();

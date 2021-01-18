@@ -25,8 +25,8 @@ export class KeyboardNavigationService implements OnDestroy {
     const navigateLeftSubject = new Subject<void>();
 
     this.keyboardSubject.subscribe(next => {
-      if (next === 'ArrowLeft') navigateLeftSubject.next();
-    })
+      if (next === 'ArrowLeft') { navigateLeftSubject.next(); }
+    });
 
     return navigateLeftSubject.asObservable();
   }
@@ -38,8 +38,8 @@ export class KeyboardNavigationService implements OnDestroy {
     const navigateRightSubject = new Subject<void>();
 
     this.keyboardSubject.subscribe(next => {
-      if (next === 'ArrowRight') navigateRightSubject.next();
-    })
+      if (next === 'ArrowRight') { navigateRightSubject.next(); }
+    });
 
     return navigateRightSubject.asObservable();
   }
@@ -51,9 +51,8 @@ export class KeyboardNavigationService implements OnDestroy {
     const navigateSendSubject = new Subject<void>();
 
     this.keyboardSubject.subscribe(next => {
-      console.log(next);
-      if (next === 'Enter') navigateSendSubject.next();
-    })
+      if (next === 'Enter') { navigateSendSubject.next(); }
+    });
 
     return navigateSendSubject.asObservable();
   }

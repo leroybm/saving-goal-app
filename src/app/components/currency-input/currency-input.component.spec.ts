@@ -19,7 +19,11 @@ describe('CurrencyInputComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  /*
+   * This component is tested on e2e tests as it needs to handle inputs
+   */
 });
